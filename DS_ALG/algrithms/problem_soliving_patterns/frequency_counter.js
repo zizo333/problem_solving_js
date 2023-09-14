@@ -91,3 +91,45 @@ function validAnagram2(first, second) {
 }
 
 console.log(validAnagram2("rat", "car"));
+
+/************************ */
+
+function sameFrequency(num1, num2) {
+  let frequency1 = generateFrequency(num1);
+  let frequency2 = generateFrequency(num2);
+
+  if (Object.keys(frequency1).length !== Object.keys(frequency2).length) {
+    return false;
+  }
+  for (let key in frequency1) {
+    if (frequency1[key] !== frequency2[key]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function generateFrequency(num) {
+  let frequency = {};
+  while (num > 0) {
+    let digit = num % 10;
+    frequency[digit] = (frequency[digit] || 0) + 1;
+    num = ~~(num / 10);
+  }
+  return frequency;
+}
+
+console.log(sameFrequency(182, 281));
+
+/************************ */
+function areThereDuplicates(...args) {
+  let frequency = {};
+  for (let arg of args) {
+    frequency[arg] = (frequency[arg] || 0) + 1;
+    if (frequency[arg] > 1) {
+      return true;
+    }
+  }
+
+  return false;
+}
