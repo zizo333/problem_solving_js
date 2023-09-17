@@ -125,3 +125,35 @@ console.log(averagePair2([1, 2, 3], 2.5)); // true
 console.log(averagePair2([1, 3, 3, 5, 6, 7, 10, 12, 19], 8)); // true
 console.log(averagePair2([-1, 0, 3, 4, 5, 6], 4.1)); // false
 console.log(averagePair2([], 4)); // false
+
+/*********************** */
+
+function isSubsequence1(str1, str2) {
+  if (str1.length > str2.length) return false;
+
+  let i = 0;
+  let j = 0;
+
+  while (i < str1.length && j < str2.length) {
+    if (str1[i] === str2[j]) i++;
+    if (i === str1.length) return true;
+    j++;
+  }
+  return false;
+}
+
+function isSubsequence2(str1, str2) {
+  if (str1.length > str2.length) return false;
+
+  if (str1.length === 0) return true;
+  if (str2.length === 0) return false;
+
+  return str1.slice(0, 1) === str2.slice(0, 1)
+    ? isSubsequence2(str1.slice(1), str2.slice(1))
+    : isSubsequence2(str1, str2.slice(1));
+}
+
+console.log(isSubsequence2("hello", "hello world")); // true
+console.log(isSubsequence2("sing", "sting")); // true
+console.log(isSubsequence2("abc", "abracadabra")); // true
+console.log(isSubsequence2("abc", "acb")); // false (order matters)
