@@ -157,3 +157,22 @@ console.log(isSubsequence2("hello", "hello world")); // true
 console.log(isSubsequence2("sing", "sting")); // true
 console.log(isSubsequence2("abc", "abracadabra")); // true
 console.log(isSubsequence2("abc", "acb")); // false (order matters)
+
+/**************** */
+
+function isPalindrome(str) {
+  let left = 0;
+  let right = str.length - 1;
+  let isSame = true;
+  while (left < right) {
+    if (str[left] !== str[right]) {
+      isSame = false;
+      break;
+    }
+    left++;
+    right--;
+  }
+  return isSame;
+}
+
+console.log(isPalindrome("alnsnla"));

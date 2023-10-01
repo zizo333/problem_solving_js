@@ -1,3 +1,4 @@
+// O(logn)  -  O(1)
 function binarySearch(arr, value) {
   let left = 0;
   let right = arr.length - 1;
